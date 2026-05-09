@@ -1,0 +1,462 @@
+/* ===================================
+GLOBAL
+=================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    background: #081120;
+
+    color: white;
+
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+/* ===================================
+LAYOUT
+=================================== */
+
+.container {
+
+    display: flex;
+
+    height: 100vh;
+}
+
+/* ===================================
+SIDEBAR
+=================================== */
+
+.sidebar {
+
+    width: 260px;
+
+    background: #07102a;
+
+    padding: 20px;
+
+    border-right: 1px solid #1d2c4d;
+}
+
+/* ===================================
+LOGO
+=================================== */
+
+.logo-container {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+.logo-image {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 12px;
+}
+
+.logo-container h1 {
+
+    font-size: 42px;
+
+    color: #35b8ff;
+}
+
+.sidebar-text {
+
+    color: #d6d6d6;
+
+    line-height: 1.5;
+
+    margin-bottom: 30px;
+}
+
+/* ===================================
+FEATURE CARDS
+=================================== */
+
+.feature-card {
+
+    background: rgba(255,255,255,0.05);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    margin-bottom: 18px;
+
+    transition: 0.3s ease;
+}
+
+.feature-card:hover {
+
+    transform: translateY(-5px);
+
+    background: rgba(255,255,255,0.08);
+}
+
+.feature-card h3 {
+
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+
+    color: #c9c9c9;
+
+    line-height: 1.5;
+}
+
+/* ===================================
+MAIN
+=================================== */
+
+.main {
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+/* ===================================
+HEADER
+=================================== */
+
+.header {
+
+    background: linear-gradient(
+        90deg,
+        #0d9de2,
+        #2f63ff
+    );
+
+    padding: 25px;
+}
+
+.header h1 {
+
+    font-size: 46px;
+
+    margin-bottom: 10px;
+}
+
+.header p {
+
+    font-size: 18px;
+
+    color: #eef4ff;
+}
+
+/* ===================================
+CHAT AREA
+=================================== */
+
+.chat-area {
+
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 25px;
+}
+
+/* ===================================
+WELCOME CARD
+=================================== */
+
+.welcome-card {
+
+    background: rgba(255,255,255,0.06);
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    margin-bottom: 25px;
+}
+
+.welcome-card h2 {
+
+    margin-bottom: 15px;
+}
+
+.welcome-card p {
+
+    color: #d5d5d5;
+}
+
+/* ===================================
+USER MESSAGE
+=================================== */
+
+.user-message {
+
+    background: #2f63ff;
+
+    padding: 16px;
+
+    border-radius: 18px;
+
+    margin-bottom: 20px;
+
+    margin-left: auto;
+
+    max-width: 70%;
+
+    font-size: 16px;
+}
+
+/* ===================================
+BOT MESSAGE
+=================================== */
+
+.bot-message {
+
+    background: rgba(255,255,255,0.07);
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    margin-bottom: 20px;
+
+    max-width: 85%;
+
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ===================================
+ASSESSMENT CARD
+=================================== */
+
+.assessment-card {
+
+    background: rgba(255,255,255,0.05);
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    margin-top: 18px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    transition: 0.3s ease;
+}
+
+.assessment-card:hover {
+
+    transform: translateY(-4px);
+
+    background: rgba(255,255,255,0.09);
+}
+
+.assessment-card h3 {
+
+    margin-bottom: 12px;
+}
+
+.assessment-card p {
+
+    color: #d4d4d4;
+
+    margin-bottom: 12px;
+
+    line-height: 1.5;
+}
+
+.assessment-card a {
+
+    color: #48b8ff;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+.assessment-card a:hover {
+
+    text-decoration: underline;
+}
+
+/* ===================================
+TAGS
+=================================== */
+
+.tag {
+
+    display: inline-block;
+
+    padding: 8px 14px;
+
+    border-radius: 20px;
+
+    margin-top: 10px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+/* Technical */
+
+.tag.technical {
+
+    background: #2196f3;
+}
+
+/* Cognitive */
+
+.tag.cognitive {
+
+    background: #8a4dff;
+}
+
+/* Personality */
+
+.tag.personality {
+
+    background: #17b26a;
+}
+
+/* Finance */
+
+.tag.finance {
+
+    background: #ff9800;
+}
+
+/* General */
+
+.tag.general {
+
+    background: #6d778d;
+}
+
+/* ===================================
+LOADING
+=================================== */
+
+.loading {
+
+    color: #9fd2ff;
+
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.3;
+    }
+}
+
+/* ===================================
+INPUT AREA
+=================================== */
+
+.input-area {
+
+    display: flex;
+
+    padding: 18px;
+
+    background: #0b152b;
+
+    border-top: 1px solid #1e2c4d;
+}
+
+.input-area input {
+
+    flex: 1;
+
+    padding: 18px;
+
+    border-radius: 15px;
+
+    border: none;
+
+    outline: none;
+
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+
+    font-size: 16px;
+}
+
+.input-area button {
+
+    margin-left: 15px;
+
+    padding: 18px 28px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: linear-gradient(
+        90deg,
+        #0ea5ff,
+        #2f63ff
+    );
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.input-area button:hover {
+
+    transform: scale(1.05);
+}
+
+/* ===================================
+SCROLLBAR
+=================================== */
+
+::-webkit-scrollbar {
+
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: #2f63ff;
+
+    border-radius: 10px;
+}

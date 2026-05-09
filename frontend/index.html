@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        SHL AI Hiring Assistant
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ===================================
+        SIDEBAR
+        ==================================== -->
+
+        <div class="sidebar">
+
+            <!-- Logo -->
+
+            <div class="logo-container">
+
+                <img
+                    src="shl_logo.jpg"
+                    alt="SHL Logo"
+                    class="logo-image"
+                >
+
+                <h1>AI</h1>
+
+            </div>
+
+            <p class="sidebar-text">
+
+                Assessment Recommendation
+                System
+
+            </p>
+
+            <!-- Feature Cards -->
+
+            <div class="feature-card">
+
+                <h3>
+                    AI Retrieval Engine
+                </h3>
+
+                <p>
+                    FAISS + BM25 powered
+                    semantic recommendation
+                    engine
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <h3>
+                    Intelligent Comparison
+                </h3>
+
+                <p>
+                    Compares SHL assessments
+                    using grounded catalog
+                    metadata
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <h3>
+                    FastAPI Backend
+                </h3>
+
+                <p>
+                    High-performance API
+                    with structured JSON
+                    responses
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ===================================
+        MAIN AREA
+        ==================================== -->
+
+        <div class="main">
+
+            <!-- Header -->
+
+            <div class="header">
+
+                <h1>
+                    AI Hiring Assistant
+                </h1>
+
+                <p>
+                    Recommend SHL assessments
+                    intelligently
+                </p>
+
+            </div>
+
+            <!-- Chat Area -->
+
+            <div
+                class="chat-area"
+                id="chat-area"
+            >
+
+                <!-- Welcome -->
+
+                <div class="welcome-card">
+
+                    <h2>
+                        Hello 👋
+                    </h2>
+
+                    <p>
+
+                        Tell me the hiring role
+                        and I will recommend
+                        suitable SHL assessments.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Input -->
+
+            <div class="input-area">
+
+                <input
+                    type="text"
+                    id="message-input"
+                    placeholder="Example: Hiring Java developer"
+                >
+
+                <button onclick="sendMessage()">
+                    Send
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
