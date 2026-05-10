@@ -261,14 +261,6 @@ It refuses:
 The project can be deployed using:
 
 - Render
-- Railway
-- Hugging Face Spaces
-- AWS
-- Azure
-
-Recommended platform:
-
-- Render
 
 ---
 

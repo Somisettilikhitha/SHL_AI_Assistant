@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from fastapi import Request
 
 from pydantic import BaseModel
 from typing import List
@@ -15,14 +18,41 @@ from context_parser import extract_context
 app = FastAPI()
 
 # -----------------------------------
-# CORS FIX
+# Static Files
+# -----------------------------------
+
+app.mount(
+
+    "/static",
+
+    StaticFiles(directory="static"),
+
+    name="static"
+)
+
+# -----------------------------------
+# Templates
+# -----------------------------------
+
+templates = Jinja2Templates(
+
+    directory="templates"
+)
+
+# -----------------------------------
+# CORS Middleware
 # -----------------------------------
 
 app.add_middleware(
+
     CORSMiddleware,
+
     allow_origins=["*"],
+
     allow_credentials=True,
+
     allow_methods=["*"],
+
     allow_headers=["*"],
 )
 
@@ -41,18 +71,21 @@ class ChatRequest(BaseModel):
     messages: List[Message]
 
 # -----------------------------------
-# Root Endpoint
+# Frontend Route
 # -----------------------------------
 
 @app.get("/")
-def home():
+async def home(request: Request):
 
-    return {
+    return templates.TemplateResponse(
 
-        "message":
-        "SHL AI Assistant Running"
+        "index.html",
 
-    }
+        {
+
+            "request": request
+        }
+    )
 
 # -----------------------------------
 # Health Endpoint
@@ -64,7 +97,6 @@ def health():
     return {
 
         "status": "ok"
-
     }
 
 # -----------------------------------
@@ -81,8 +113,8 @@ def chat(request: ChatRequest):
     messages = [
 
         msg.dict()
-        for msg in request.messages
 
+        for msg in request.messages
     ]
 
     # -----------------------------------
@@ -90,10 +122,12 @@ def chat(request: ChatRequest):
     # -----------------------------------
 
     latest_message = (
+
         messages[-1]["content"]
     )
 
     latest_message_lower = (
+
         latest_message.lower()
     )
 
@@ -102,13 +136,14 @@ def chat(request: ChatRequest):
     # -----------------------------------
 
     intent = classify_intent(
+
         latest_message
     )
 
     print("Intent:", intent)
 
     # -----------------------------------
-    # OUT OF SCOPE
+    # Out of Scope
     # -----------------------------------
 
     if intent == "out_of_scope":
@@ -140,8 +175,10 @@ def chat(request: ChatRequest):
             "reply":
 
             (
-                "What role are you "
-                "hiring for?"
+                "Please provide the "
+                "job role, required "
+                "skills, or hiring "
+                "requirements."
             ),
 
             "recommendations": [],
@@ -173,18 +210,15 @@ def chat(request: ChatRequest):
 
             (
                 "OPQ32r is a Personality "
-                "Assessment that measures "
-                "workplace behavior, "
-                "leadership, communication, "
-                "teamwork, and personality "
-                "traits. "
+                "Assessment that evaluates "
+                "behavioral traits such as "
+                "leadership, teamwork, "
+                "communication, and work style. "
 
-                "Whereas GSA is a Cognitive "
-                "Ability Assessment that "
-                "measures verbal reasoning, "
-                "numerical reasoning, "
-                "logical reasoning, and "
-                "problem-solving skills."
+                "GSA is a Cognitive Ability "
+                "Assessment that measures "
+                "problem-solving, logical reasoning, "
+                "verbal reasoning, and numerical ability."
             ),
 
             "recommendations": [],
@@ -193,7 +227,7 @@ def chat(request: ChatRequest):
         }
 
     # -----------------------------------
-    # Extract Context
+    # Extract Conversation Context
     # -----------------------------------
 
     context = extract_context(
@@ -203,11 +237,14 @@ def chat(request: ChatRequest):
     print("Context:", context)
 
     # -----------------------------------
-    # Retrieve Assessments
+    # Retrieve Recommendations
     # -----------------------------------
 
     results = retrieve_assessments(
-        latest_message
+
+        latest_message,
+
+        top_k=5
     )
 
     recommendations = []
@@ -223,12 +260,17 @@ def chat(request: ChatRequest):
             item["url"],
 
             "test_type":
-            item["test_type"]
+            item["test_type"],
 
+            "match_score":
+            item.get(
+                "match_score",
+                0
+            )
         })
 
     # -----------------------------------
-    # Empty Results Handling
+    # No Results Found
     # -----------------------------------
 
     if len(recommendations) == 0:
