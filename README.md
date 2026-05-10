@@ -283,3 +283,6 @@ Recommended platform:
 
 ---
 
+## Project Output
+
+![Project Output](images/Output.png)
