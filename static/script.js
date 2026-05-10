@@ -5,7 +5,7 @@ const chatArea =
 
 const input =
     document.getElementById(
-        "message-input"
+        "message-input" 
     );
 
 // ===================================
