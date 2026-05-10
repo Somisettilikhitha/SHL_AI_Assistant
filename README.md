@@ -94,7 +94,7 @@ SHL Assessment Recommendations
 ## Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/SHL_AI_Assistant.git
+git clone https://github.com/Somisettilikhitha/SHL_AI_Assistant.git
 ```
 
 ## Navigate to Project Folder
